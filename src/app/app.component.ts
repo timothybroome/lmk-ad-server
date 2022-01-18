@@ -50,23 +50,16 @@ interface IBookingListImportItem {
       
       </div>
 
-      <div class="space"></div>
-
       <div class="xg-frame-2 half-width-frame">
-        <h4 class="title">Advertising Packager</h4>
-
+        <h4 class="title">Advertising Package</h4>
       </div>
 
       <div class="xg-frame-2 half-width-frame">
         <h4 class="title">Content Restriction</h4>
       
       </div>
-
-      <div class="space"></div>
-
       <div class="xg-frame-2 half-width-frame">
         <h4 class="title">Content Targeting</h4>
-      
       </div>
     
     </div>

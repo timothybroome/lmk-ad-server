@@ -443,7 +443,7 @@ body,
 
 /* Angular Material Styles Fonts, Colors */
 
-@import '~@angular/material/theming';
+@import 'theming.scss';
 @include mat-core();
 
 $xg-mat-primary: (
