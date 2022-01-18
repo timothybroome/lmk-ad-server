@@ -1,0 +1,776 @@
+/*
+    Global styles used in the xG Design System.
+    
+    This file is imported through the xg-styles.scss or styles.scss 
+    stylesheets and shouldn't be imported directly by a project.
+*/
+
+h1 {
+  font: normal $weight-normal $extra-extra-large $main-font;
+}
+h2 {
+  font: normal $weight-normal $extra-large $main-font;
+}
+h3 {
+  font: normal $weight-normal $large $main-font;
+}
+h4 {
+  font: normal $weight-normal $medium $main-font;
+}
+.xg-caption {
+  font: normal $weight-normal $extra-small $main-font;
+}
+
+body,
+.ui-widget {
+  font: normal $weight-normal $small $main-font !important;
+}
+
+.no-select {
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Likely future */
+}
+
+.xg-frame-1,
+.xg-frame-2,
+.xg-frame-3 {
+  min-width: 100px;
+  min-height: 20px;
+  border-radius: $radius-1;
+  background-color: $base-0;
+  box-shadow: $shadow-1;
+  margin-bottom: 24px;
+  padding: 16px;
+}
+.xg-frame-2 {
+  box-shadow: $shadow-2;
+}
+.xg-frame-3 {
+  box-shadow: $shadow-3;
+}
+
+.xg-form {
+  border: 1px solid $gray;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 10px;
+}
+.xg-form-bg {
+  background-color: $smokeWhite;
+  border-radius: 4px;
+}
+.xg-main-header {
+  border-bottom: 0px !important;
+  margin: 0px;
+  padding-bottom: 0px;
+}
+.xg-sub-header {
+  font-size: $large;
+  margin: 0;
+  color: $base-4;
+  font-weight: $weight-normal;
+  padding-bottom: 0px !important;
+  display: inline-block;
+}
+
+/* Secondary Form Styles */
+.xg-inner-secondary-form {
+  .xg-inner-sec-head {
+    background-color: $gray;
+    padding: 10px 12px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: $royalBlue;
+    font-weight: 600;
+    i {
+      padding-right: 5px;
+    }
+  }
+  .xg-inner-sec-body {
+    background-color: $light-blue-bg-color;
+    padding: 10px;
+    .xg-inner-sec-form-bg {
+      background-color: $white;
+      float: left;
+      width: calc(100% - 100px);
+      margin-bottom: 10px;
+    }
+  }
+}
+.xg-sec-icon-btn {
+  min-width: 85px;
+  float: right;
+  button {
+    border-radius: 50%;
+    border: 0;
+    background-color: $royalBlue;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: $white;
+    cursor: pointer;
+    margin: 0 5px;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.xg-sec-icon-btn button.danger {
+  background-color: $red;
+}
+// .xg-sec-right-btns{
+//     min-width: 100px;
+//     float: right;
+// }
+.xg-cont-left {
+  float: left;
+  width: calc(100% - 85px);
+}
+.xg-cus-switch {
+  span {
+    line-height: 25px;
+    font-size: $font-14;
+    vertical-align: top;
+    padding-right: 5px;
+    font-weight: 600;
+  }
+}
+
+.xg-search-box {
+  background-color: $white;
+  .xg-search-box-label {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: $mediumBlack;
+  }
+  input.searchAuto {
+    padding: 7px 30px 7px 10px !important;
+    border-radius: 10px !important;
+    border: 0 !important;
+    background-color: $smokeWhite !important;
+    min-height: 34px;
+    line-height: 20px;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.xg-accordion-event {
+  float: right;
+  cursor: pointer;
+}
+.xg-accordion-icon .xg-inner-sec-body {
+  display: none;
+}
+/* Secondary Form Styles */
+
+/* xg-primary-panel Styles */
+.xg-primary-panel {
+  border: 1px solid $gray;
+  border-radius: 3px;
+  background-color: $white;
+  margin-bottom: 10px;
+}
+.xg-primary-panel-header {
+  background-color: $royalBlue;
+  padding: 12px 10px;
+  color: $white;
+  font-weight: 500;
+  font-size: $font-16;
+  overflow: hidden;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.xg-primary-panel-body {
+  background-color: $smokeWhite;
+  border-radius: 3px;
+  padding: 5px;
+  margin: 5px;
+}
+/* xg-primary-panel Styles */
+
+.xg-blue-label {
+  color: $royalBlue;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+.xg-red-color {
+  color: $red;
+}
+.xg-full-width {
+  width: 100%;
+}
+.xg-outline-0 {
+  outline: 0;
+}
+.xg-font-weight-bold {
+  font-weight: 700;
+}
+.xg-font-weight-600 {
+  font-weight: 600;
+}
+.xg-font-weight-400 {
+  font-weight: 400;
+}
+.xg-height-34 {
+  height: 34px;
+}
+.xg-cursor-move {
+  cursor: move;
+}
+.xg-display-block {
+  display: block;
+}
+.xg-display-inline-block {
+  display: inline-block;
+}
+.xg-display-inline {
+  display: inline;
+}
+/* Common Alignments Styles */
+.xg-pull-right {
+  float: right;
+}
+.xg-pull-left {
+  float: left;
+}
+.xg-text-right {
+  text-align: right;
+}
+.xg-text-left {
+  text-align: left;
+}
+.xg-text-center {
+  text-align: center;
+}
+.xg-cursor {
+  cursor: pointer;
+}
+
+/* Need to add simple format dynamic value changes code */
+
+@for $width from 0 through 1000 {
+  .xg-width-#{$width} {
+    width: #{$width}px !important;
+  }
+}
+@for $mar from 0 through 100 {
+  .xg-m-#{$mar} {
+    margin: #{$mar}px !important;
+  }
+  .xg-m-t-#{$mar} {
+    margin-top: #{$mar}px !important;
+  }
+  .xg-m-b-#{$mar} {
+    margin-bottom: #{$mar}px !important;
+  }
+  .xg-m-l-#{$mar} {
+    margin-left: #{$mar}px !important;
+  }
+  .xg-m-r-#{$mar} {
+    margin-right: #{$mar}px !important;
+  }
+  .xg-m-l-r-#{$mar} {
+    margin-left: #{$mar}px !important;
+    margin-right: #{$mar}px !important;
+  }
+  .xg-m-t-b-#{$mar} {
+    margin-top: #{$mar}px !important;
+    margin-bottom: #{$mar}px !important;
+  }
+  .xg-m-#{$mar}-0 {
+    margin: #{$mar}px 0 !important;
+  }
+  .xg-m-0-#{$mar} {
+    margin: 0 #{$mar}px !important;
+  }
+}
+
+@for $pad from 0 through 100 {
+  .xg-p-#{$pad} {
+    padding: #{$pad}px !important;
+  }
+  .xg-p-t-#{$pad} {
+    padding-top: #{$pad}px !important;
+  }
+  .xg-p-b-#{$pad} {
+    padding-bottom: #{$pad}px !important;
+  }
+  .xg-p-l-#{$pad} {
+    padding-left: #{$pad}px !important;
+  }
+  .xg-p-r-#{$pad} {
+    padding-right: #{$pad}px !important;
+  }
+  .xg-p-l-r-#{$pad} {
+    padding-left: #{$pad}px !important;
+    padding-right: #{$pad}px !important;
+  }
+  .xg-p-t-b-#{$pad} {
+    padding-top: #{$pad}px !important;
+    padding-bottom: #{$pad}px !important;
+  }
+  .xg-p-#{$pad}-0 {
+    padding: #{$pad}px 0 !important;
+  }
+  .xg-p-0-#{$pad} {
+    padding: 0 #{$pad}px !important;
+  }
+}
+
+/* Need to add simple format dynamic value changes code */
+
+.xg-user-details {
+  float: right;
+}
+.xg-chips {
+  border-radius: 3px;
+  padding: 2px 6px;
+  color: $mediumBlack;
+  background-color: $gray;
+  font-size: $font-11;
+}
+
+.xg-bg-green {
+  color: $white;
+  background-color: $green;
+}
+
+.xg-bg-purple {
+  color: $white;
+  background-color: $purple;
+}
+
+.xg-bg-red {
+  color: $white;
+  background-color: $red;
+}
+
+.xg-bg-blue {
+  color: $white;
+  background-color: $royalBlue;
+}
+
+.xg-bg-orange {
+  color: $white;
+  background-color: $orangeRed;
+}
+.xg-clear {
+  clear: both;
+}
+.xg-custom-blue-label {
+  color: $royalBlue;
+  font-weight: 600;
+  margin-right: 5px;
+}
+.xg-trash-chip {
+  position: relative;
+  background-color: $royalBlue;
+  font-size: $font-13;
+  color: $white;
+  padding: 5px 25px 5px 10px;
+  height: 24px;
+  border-radius: 14px;
+  line-height: 14px;
+  margin: 3px;
+  i {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    cursor: pointer;
+    font-size: $font-11;
+    color: $white;
+  }
+}
+
+.xg-selected-items {
+  background-color: $gray;
+  border-radius: 20px;
+  padding: 5px 10px;
+  display: inline-block;
+  margin: 3px;
+  i {
+    color: $white;
+    background-color: $darkGray;
+    border-radius: 50%;
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    margin-left: 4px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+}
+/* Common Alignments Styles */
+
+.ui-dropdown {
+  min-width: auto !important;
+}
+
+.xg-primary-panel {
+  border: 1px solid $gray;
+  border-radius: 3px;
+  background-color: $white;
+  margin-bottom: 10px;
+}
+
+.xg-primary-panel-header {
+  background-color: $royalBlue;
+  padding: 12px 10px;
+  color: $white;
+  font-weight: 500;
+  font-size: $font-16;
+  overflow: hidden;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.xg-primary-panel-body {
+  background-color: $smokeWhite;
+  border-radius: 3px;
+  padding: 5px;
+  margin: 5px;
+}
+
+/* Angular Material Styles Fonts, Colors */
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+$xg-mat-primary: (
+  50: $primary-2,
+  100: $primary-2,
+  200: $primary-2,
+  300: $primary-2,
+  400: $primary-2,
+  500: $primary-2,
+  600: $primary-2,
+  700: $primary-2,
+  800: $primary-2,
+  900: $primary-2,
+  A100: $base-0,
+  A200: $base-4,
+  A400: $base-4,
+  A700: $base-4,
+  contrast: (
+    50: $base-4,
+    100: $base-4,
+    200: $base-4,
+    300: $base-4,
+    400: $base-4,
+    500: $base-4,
+    600: $base-4,
+    700: $base-0,
+    800: $base-0,
+    900: $base-0,
+    A100: $base-4,
+    A200: $base-4,
+    A400: $base-4,
+    A700: $base-4,
+  ),
+);
+$xg-mat-accent: (
+  50: $primary-2,
+  100: $primary-2,
+  200: $primary-2,
+  300: $primary-2,
+  400: $primary-2,
+  500: $primary-2,
+  600: $primary-2,
+  700: $primary-2,
+  800: $primary-2,
+  900: $primary-2,
+  A100: $base-0,
+  A200: $base-0,
+  A400: $primary-3,
+  A700: $primary-3,
+  contrast: (
+    50: $base-4,
+    100: $base-4,
+    200: $base-4,
+    300: $base-4,
+    400: $base-4,
+    500: $base-4,
+    600: $base-4,
+    700: $base-4,
+    800: $base-4,
+    900: $base-4,
+    A100: $base-4,
+    A200: $base-4,
+    A400: $base-4,
+    A700: $base-4,
+  ),
+);
+$xg-mat-warn: (
+  50: $error-1,
+  100: $error-1,
+  200: $error-1,
+  300: $error-1,
+  400: $error-1,
+  500: $error-1,
+  600: $error-1,
+  700: $error-1,
+  800: $error-1,
+  900: $error-1,
+  A100: $base-0,
+  A200: $base-0,
+  A400: $error-1,
+  A700: $error-1,
+  contrast: (
+    50: $base-4,
+    100: $base-4,
+    200: $base-4,
+    300: $base-4,
+    400: $base-4,
+    500: $base-4,
+    600: $base-4,
+    700: $base-4,
+    800: $base-4,
+    900: $base-4,
+    A100: $base-4,
+    A200: $base-4,
+    A400: $base-4,
+    A700: $base-4,
+  ),
+);
+$primary: mat-palette($xg-mat-primary);
+$accent: mat-palette($xg-mat-accent);
+$warn: mat-palette($xg-mat-warn);
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+$custom-typography: mat-typography-config(
+  $font-family: 'xg-roboto',
+  $display-4: mat-typography-level(112px, 112px, 300),
+  $display-3: mat-typography-level(56px, 56px, 400),
+  $display-2: mat-typography-level(45px, 48px, 400),
+  $display-1: mat-typography-level(34px, 40px, 400),
+  $headline: mat-typography-level(24px, 32px, 400),
+  $title: mat-typography-level(18px, 32px, 500),
+  $subheading-2: mat-typography-level(16px, 28px, 400),
+  $subheading-1: mat-typography-level(16px, 24px, 400),
+  $body-2: mat-typography-level(13px, 24px, 500),
+  $body-1: mat-typography-level(13px, 20px, 400),
+  $caption: mat-typography-level(10px, 20px, 400),
+  $button: mat-typography-level(13px, 14px, 500),
+  $input: mat-typography-level(13px, 1.25, 400),
+);
+
+@include angular-material-typography($custom-typography);
+
+/* material multi select checkbox */
+
+.mat-option-pseudo-checkbox {
+  margin-right: 20px !important;
+  color: $base-3 !important;
+  background-color: $base-1;
+}
+
+/* material multi select checkbox */
+
+/* material form field styles */
+.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float
+  .mat-form-field-label {
+  font-size: $extra-small !important;
+  transform: translateY(-1.3125em) scale(1) perspective(100px)
+    translateZ(0.00106px) !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 6px 0 !important;
+}
+.mat-select-value,
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled),
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  color: $base-4 !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: $base-2;
+}
+.mat-form-field {
+  &.mat-focused {
+    .mat-form-field-label {
+      color: $primary-2 !important;
+    }
+    .mat-form-field-ripple {
+      background-color: $primary-2 !important;
+    }
+  }
+  &.mat-form-field-invalid {
+    .mat-form-field-label {
+      color: $error-1 !important;
+    }
+    .mat-form-field-ripple {
+      background-color: $error-1 !important;
+    }
+  }
+}
+/* material form field styles */
+
+/* material mat-option common design as per XG UX Designs */
+
+.mat-option {
+  color: $base-4 !important;
+  font-size: $small !important;
+  line-height: 36px !important;
+  height: 36px !important;
+  margin: 0 4px;
+  padding: 0 12px !important;
+  .mat-option-text {
+    color: $base-4 !important;
+    font-size: $small !important;
+    font-family: $main-font !important;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      background: $base-2;
+      width: 100%;
+      right: 0;
+      margin: 0 auto;
+    }
+  }
+  &:focus:not(.mat-option-disabled),
+  &:hover:not(.mat-option-disabled) {
+    background: $base-1 !important;
+  }
+  &.mat-active {
+    background: $base-1 !important;
+  }
+  &:last-child .mat-option-text:after {
+    display: none !important;
+  }
+  &.mat-option-multiple.mat-active {
+    background-color: $base-0 !important;
+  }
+  &.mat-option-disabled {
+    color: $base-2 !important;
+    .mat-pseudo-checkbox-disabled {
+      opacity: 0.4;
+    }
+  }
+}
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  background: $base-1 !important;
+}
+
+/* material mat-option common design as per XG UX Designs */
+
+.mat-select-arrow {
+  color: $base-3;
+}
+.mat-error {
+  font-size: $extra-small;
+  color: $error-1 !important;
+}
+.mat-form-field .mat-select.mat-select-invalid .mat-select-arrow,
+.mat-focused .mat-form-field-required-marker {
+  color: $error-1 !important;
+}
+
+/* Angular Material Styles Fonts, Colors */
+
+/* Common Styles of Campaign Components*/
+.xg-form-panel {
+  padding: 16px;
+}
+
+.xg-header-div {
+  margin-bottom: 8px;
+  display: block;
+  padding: 0 0 8px;
+  width: 100%;
+  .xg-main-header {
+    font-size: $extra-large;
+    margin: 0 !important;
+    color: $base-4;
+    font-weight: $weight-medium;
+    padding-bottom: 0 !important;
+    display: inline-block;
+  }
+  .xg-market-dropdown {
+    display: inline-block;
+  }
+  xg-markets {
+    display: inline-block;
+    width: 250px;
+  }
+  .xg-text-group {
+    margin-bottom: 0;
+  }
+}
+
+/* xg-mat-popup */
+.xg-mat-popup {
+  .mat-dialog-title,
+  h1 {
+    margin: -14px -20px 0px;
+    color: $base-4;
+    padding: 8px 15px;
+    font-weight: $weight-medium;
+    font-size: $large;
+  }
+  .mat-dialog-actions {
+    margin: 0 -14px -24px;
+    .xg-button {
+      border: 0 !important;
+    }
+  }
+}
+/* xg-mat-popup */
+
+/* Common Styles of Campaign Components */
+
+/* Responsive Media Screen Styles (Tablets & Mobiles) */
+
+@media (max-width: 1024px) {
+  .xg-programs-list {
+    max-height: 200px;
+  }
+}
+
+@media (max-width: 640px) {
+  .xg-resp-m-0 {
+    margin: 0;
+  }
+  .xg-resp-m-t-0 {
+    margin-top: 0;
+  }
+  .xg-resp-m-b-0 {
+    margin-bottom: 0;
+  }
+  .xg-resp-m-l-0 {
+    margin-left: 0;
+  }
+  .xg-resp-m-r-0 {
+    margin-right: 0;
+  }
+  .xg-resp-p-0 {
+    padding: 0;
+  }
+  .xg-resp-p-t-0 {
+    padding-top: 0;
+  }
+  .xg-resp-p-b-0 {
+    padding-bottom: 0;
+  }
+  .xg-resp-p-l-0 {
+    padding-left: 0;
+  }
+  .xg-resp-p-r-0 {
+    padding-right: 0;
+  }
+}
+
+/* Responsive Media Screen Styles (Tablets & Mobiles) */

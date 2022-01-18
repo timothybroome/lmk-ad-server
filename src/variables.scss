@@ -1,0 +1,229 @@
+/*
+    xG Design System Variable Definitions 
+
+    This file contains the variables that should be used in all stylesheets
+    throughout xG projects.
+
+    Individual stylesheets throughout a project shouldn't directly reference
+    a color, font, padding, border-radius, etc, value.  They should reference
+    the variables in this file.
+
+    This file is imported into component level stylesheets through the
+    component-styles.scss file, and into the global stylesheet through
+    the styles.scss file.  There should be no need to manually import  
+    this file directly into a stylesheet.
+*/
+
+/* Fonts */
+$main-font: 'xg-roboto', sans-serif;
+
+/* Sizes */
+$extra-small: 10px;
+$small: 13px;
+$medium: 16px;
+$large: 18px;
+$extra-large: 24px;
+$extra-extra-large: 34px;
+
+$weight-light: 300;
+$weight-normal: 400;
+$weight-medium: 500;
+$weight-bold: 700;
+
+/* Colours */
+$primary-1: #2964b1;
+$primary-2: #2079ca;
+$primary-3: #6ea8dc;
+$primary-4: #99c2e7;
+
+$base-0: #ffffff;
+$base-1: #f3f3f3;
+$base-2: #cfcfcf;
+$base-3: #8b8b8b;
+$base-4: #383c3f;
+
+$error-1: #c62828;
+$warning-1: #ffa000;
+$warning-2: #ffe082;
+$success-1: #66bb6a;
+
+$alpha-0: 0;
+$alpha-1: 0.1;
+$alpha-2: 0.2;
+$alpha-3: 0.3;
+$alpha-4: 0.4;
+$alpha-5: 0.5;
+$alpha-6: 0.6;
+$alpha-7: 0.7;
+$alpha-8: 0.8;
+$alpha-9: 0.9;
+$alpha-10: 1;
+
+/* Start: Colors for lightmdoe dashboard datavisualiztions only */
+$datavis-01: #0d47a1;
+$datavis-02: #80cbc4;
+$datavis-03: #ffe082;
+$datavis-04: #ffa000;
+$datavis-05: #00bcd4;
+$datavis-06: #c8e6c9;
+$datavis-07: #e91e63;
+$datavis-08: #8e24aa;
+$datavis-09: #ffb300;
+$datavis-10: #e57373;
+$datavis-11: #0288d1;
+$datavis-12: #ad1457;
+$datavis-13: #ce93d8;
+$datavis-14: #6a1b9a;
+$datavis-15: #ffcdd2;
+$datavis-16: #ffca28;
+$datavis-17: #e53935;
+$datavis-18: #bcaaa4;
+$datavis-19: #607d8b;
+$datavis-20: #dcedc8;
+/* End: Colors for lightmode dashboard datavisualiztions only */
+
+/* Start: Colors for darkmdoe dashboard datavisualiztions only */
+/* This stays commented out till we have separate themes */
+/*
+$datavis-01: #0d47a1;
+$datavis-02: #80cbc4;
+$datavis-03: #FFA000;
+$datavis-04: #f1f8e9;
+$datavis-05: #00bcd4;
+$datavis-06: #c8e6c9;
+$datavis-07: #e91e63;
+$datavis-08: #8e24aa;
+$datavis-09: #ffb300;
+$datavis-10: #e57373;
+$datavis-11: #0288d1;
+$datavis-12: #ad1457;
+$datavis-13: #ce93d8;
+$datavis-14: #6a1b9a;
+$datavis-15: #ffcdd2;
+$datavis-16: #ffca28;
+$datavis-17: #e53935;
+$datavis-18: #BCAAA4;
+$datavis-19: #607D8B;
+$datavis-20: #dcedc8;
+*/
+/* End: Colors for darkmode dashboard datavisualiztions only */
+
+/* Shadows */
+$shadow-1: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+$shadow-2: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+$shadow-3: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
+/* Border Radius */
+$radius-1: 2px;
+$radius-2: 4px;
+$radius-3: 8px;
+$radius-4: 12px;
+
+/* Borders */
+$border-base-0: 1px solid $base-0;
+$border-base-1: 1px solid $base-1;
+$border-base-2: 1px solid $base-2;
+$border-base-3: 1px solid $base-3;
+$border-base-4: 1px solid $base-4;
+$border-primary-1: 1px solid $primary-2;
+$border-primary-1-2: 2px solid $primary-2;
+$border-error-1: 1px solid $error-1;
+$border-error-1-2: 2px solid $error-1;
+
+/* Deprecated */
+
+/* Transparent Colors - We will use these sparingly when color must show through */
+$base-2-05: rgba($base-2, 0.5);
+$base-3-03: rgba($base-3, 0.3);
+$base-4-03: rgba($base-4, 0.3);
+$primary-2-03: rgba($primary-2, 0.3); // *
+$error-1-03: rgba($error-1, 0.3);
+$warning-1-03: rgba($warning-1, 0.3);
+$success-1-03: rgba($success-1, 0.3);
+
+$white: #ffffff;
+$smoke: #faffff;
+$smokeWhite: #f5f5f5;
+$ghostWhite: #f8f8ff;
+$ashWhite: #e5e5e5;
+$smokeBlue: #e8eff6;
+
+$gray: #ddd;
+$lightGray: #ccc;
+$darkGray: #a9a9a9;
+$lightBlack: #777;
+$mediumBlack: #555;
+$black: #000000;
+$ash-color: #dee1ee;
+
+$red: #ff0000;
+$darkRed: #8b0000;
+$maroon: #800000;
+$danger: #d9534f;
+
+$orange: #ffa500;
+$darkOrange: #ff8c00;
+$orangeRed: #ff4500;
+$tamota: #ff6347;
+
+$yellow: #ffff00;
+$yellowGreen: #9acd32;
+$greenYellow: #adff2f;
+$limeGreen: #32cd32;
+$lime: #00ff00;
+$green: #008000;
+$darkGreen: #006400;
+
+$blue: #0000ff;
+$navyBlue: #000080;
+$mediumBlue: #0000cd;
+$midnightBlue: #191970;
+$royalBlue: #1f78ca;
+$cyan: #00ffff;
+$lightCyan: #e0ffff;
+$info: #5bc0de;
+$light-primary-color: #1f78c9;
+
+$purple: #800080;
+$royalSecondaryBlue: #6f8de7;
+$tab-font-color: #a7b7d5;
+
+$light-redash-color: #959595;
+$light-blue-bg-color: #e9eff8;
+$dark-royalBlue: #2e3f51;
+$light-royalBlue: #c2d0db;
+
+$lightMediumBlack: #323536;
+$darkTanBlack: #383c3f;
+$darkSelectedBlack: #27292a;
+$lightAshBlue: #8d9aa8;
+$lightRed: #b75761;
+$lightGreen: #a7cb82;
+$darkOrange: #d95f00;
+
+$font-11: 11px;
+$font-12: 12px;
+$font-13: 13px;
+$font-14: 14px;
+$font-15: 15px;
+$font-16: 16px;
+$font-18: 18px;
+$font-20: 20px;
+$font-22: 22px;
+$font-23: 23px;
+$font-24: 24px;
+$font-26: 26px;
+$font-28: 28px;
+$font-30: 30px;
+$font-32: 32px;
+$font-34: 34px;
+$font-36: 36px;
+$font-38: 38px;
+$font-40: 40px;
+$font-42: 42px;
+$font-44: 44px;
+$font-46: 46px;
+$font-48: 48px;
+$font-50: 50px;
+
+/* End Deprecated */

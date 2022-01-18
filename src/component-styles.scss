@@ -1,0 +1,446 @@
+/*   
+    xG Design System Component Level Stylesheet 
+
+    Import into each component level stylesheet by placing the 
+    following at the top of the file:
+
+    @import '~@imaginecom/xg-ux-design-system-lib/component-styles.scss';
+ 
+    This file brings in the design system variables for use in the
+    component stylesheets. 
+
+    For now this sets some common field level styles,
+    but these should be moved out so they don't have 
+    to be imported into every component 
+*/
+
+@import 'variables.scss';
+
+/* XG Input Styles Start */
+.xg-text-group {
+  margin-bottom: 15px;
+  position: relative;
+  margin-left: 5px;
+  margin-right: 5px;
+  .xg-text-label {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: $mediumBlack;
+  }
+  .ui-inputtext {
+    border-width: 0 0 1px !important;
+  }
+  .ui-autocomplete {
+    position: initial;
+  }
+  .xg-check-label {
+    font-weight: normal !important;
+  }
+  .xg-text-box {
+    display: block;
+    width: 100%;
+    min-height: 34px;
+    line-height: 20px;
+    padding: 6px;
+    font-size: $small;
+    border-radius: 0;
+    color: $mediumBlack;
+    background-color: $white;
+    background-image: none;
+    border-width: 0 0 1px;
+    border-style: solid;
+    border-bottom-color: $lightGray;
+    box-sizing: border-box;
+    -webkit-transition: 0.3s all ease-in-out;
+    -ms-transition: 0.3s all ease-in-out;
+    -moz-transition: 0.3s all ease-in-out;
+    -o-transition: 0.3s all ease-in-out;
+    transition: 0.3s all ease-in-out;
+    position: relative;
+    ~ .xg-focus-border {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: $royalBlue;
+      -webkit-transition: 0.4s ease-in-out all;
+      -ms-transition: 0.4s ease-in-out all;
+      -moz-transition: 0.4s ease-in-out all;
+      -o-transition: 0.4s ease-in-out all;
+      transition: 0.4s ease-in-out all;
+    }
+    &:focus ~ .xg-focus-border {
+      width: 100%;
+      -webkit-transition: 0.4s ease-in-out all;
+      -ms-transition: 0.4s ease-in-out all;
+      -moz-transition: 0.4s ease-in-out all;
+      -o-transition: 0.4s ease-in-out all;
+      transition: 0.4s ease-in-out all;
+      left: 0;
+    }
+    &:hover {
+      border-color: $royalBlue !important;
+    }
+    &:focus {
+      outline: none;
+    }
+    &:disabled,
+    &:disabled:hover {
+      cursor: not-allowed;
+      border-color: $lightGray !important;
+      background-color: $gray;
+    }
+    &::placeholder {
+      color: $base-3;
+    }
+  }
+  textarea {
+    resize: none;
+    ~ .xg-alert {
+      bottom: -22px;
+      top: auto;
+    }
+  }
+}
+
+.xg-required {
+  .xg-text-label:after {
+    content: '*';
+    color: $red;
+    margin-left: 5px;
+  }
+  input.ng-untouched.ng-valid {
+    border-color: $lightGray;
+  }
+  input.xg-required-message {
+    border-color: $red;
+    &:hover {
+      border-color: $red !important;
+    }
+  }
+  input.xg-required-message ~ .xg-focus-border {
+    background-color: $red !important;
+  }
+}
+.xg-alert {
+  position: absolute;
+  font-size: 13px !important;
+  white-space: nowrap !important;
+  bottom: -19px !important;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.xg-alert div,
+.xg-alert-danger div {
+  color: $error-1;
+  opacity: 1;
+  transform: scale(1);
+  cursor: auto;
+}
+.xg-font-bold {
+  font-weight: 400;
+}
+.xg-text-password .xg-alert {
+  bottom: auto;
+  top: 60px;
+}
+
+/* Small Input Switch Toggle Styles */
+::ng-deep .xg-sm-switch {
+  margin: 10px;
+  .ui-inputswitch {
+    height: 15px !important;
+    width: 40px !important;
+    display: inline-block;
+    vertical-align: middle;
+    .ui-inputswitch-slider {
+      background-color: $light-royalBlue !important;
+      &:before {
+        background-color: $royalBlue !important;
+        height: 15px !important;
+        width: 20px !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        border-radius: 20px !important;
+      }
+    }
+    &.ui-inputswitch-checked .ui-inputswitch-slider:before {
+      -webkit-transform: translateX(20px) !important;
+      transform: translateX(20px) !important;
+    }
+  }
+  .xg-sm-switch-label {
+    display: inline-block;
+    color: $dark-royalBlue;
+    padding-left: 10px;
+    vertical-align: middle;
+    font-weight: 500;
+  }
+}
+/* Small Input Switch Toggle Styles */
+
+.xg-width-auto {
+  width: inherit !important;
+}
+.mg-10-0 {
+  margin: 10px 0;
+}
+.mg-15-0 {
+  margin: 15px 0;
+}
+.xg-p-0-10 {
+  padding: 0 10px;
+}
+.xg-pad-l-r-0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+// Google Autocomplete Add this css in your application
+div.pac-container {
+  z-index: 10000 !important;
+}
+
+/* Xg-Append Icons in Iput Field Styles */
+.xg-append-right-icon {
+  .xg-text-group .xg-text-box {
+    padding: 6px 30px 6px 6px;
+    text-overflow: ellipsis;
+  }
+  .xg-append-right {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+    i {
+      height: 28px;
+      width: 28px;
+      text-align: center;
+      line-height: 28px;
+      -webkit-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: $royalBlue;
+        color: $white;
+      }
+    }
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+      i {
+        pointer-events: none;
+        &:hover {
+          background-color: none;
+          color: initial;
+        }
+      }
+    }
+  }
+}
+/* Xg-Append Icons in Iput Field Styles */
+
+/* Xg-Prepend Icons in Iput Field Styles */
+.xg-append-left-icon {
+  .xg-text-group .xg-text-box {
+    padding: 6px 6px 6px 30px;
+    text-overflow: ellipsis;
+  }
+  .xg-append-left {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+    i {
+      height: 28px;
+      width: 28px;
+      text-align: center;
+      line-height: 28px;
+      -webkit-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: $royalBlue;
+        color: $white;
+      }
+    }
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+      i {
+        pointer-events: none;
+        &:hover {
+          background-color: none;
+          color: initial;
+        }
+      }
+    }
+  }
+}
+/* Xg-Prepend Icons in Iput Field Styles */
+
+/* Xg Dropdown Styles Start */
+.xg-dropdown {
+  .ui-dropdown {
+    .ui-dropdown-clear-icon {
+      color: $base-3;
+      font-size: $medium;
+      top: calc(50% - 8px);
+      border-radius: 50%;
+      height: auto;
+      margin: 0px;
+      right: 4px;
+      &:not(.ui-state-disabled) {
+        &:hover,
+        &:focus {
+          background-color: $primary-2-03;
+        }
+      }
+      & + .ui-dropdown-trigger {
+        display: none;
+      }
+    }
+    .ui-dropdown-trigger {
+      color: $base-3;
+      font-size: 16px;
+      top: calc(50% - 8px);
+      border-radius: 50%;
+      margin: 0px;
+      right: 4px;
+      line-height: initial;
+      height: 16px;
+      width: 16px;
+      transform: rotate(0deg);
+      transition: transform 0.45s;
+      span.ui-dropdown-trigger-icon {
+        position: initial;
+        margin: 0px;
+        font-size: $medium;
+        &:before {
+          content: '\e906' !important;
+          border: none;
+        }
+      }
+    }
+    .ui-dropdown-panel {
+      .ui-dropdown-items {
+        .ui-dropdown-item {
+          color: $base-4;
+          &:not(.ui-state-highlight) {
+            &:not(.ui-state-disabled) {
+              &:hover {
+                background-color: $base-1;
+              }
+            }
+          }
+          &.ui-state-highlight {
+            background-color: $base-2;
+          }
+        }
+      }
+    }
+    &.ui-dropdown-open {
+      .ui-dropdown-trigger {
+        transform: rotate(180deg);
+        transition: transform 0.45s;
+      }
+    }
+  }
+}
+/* Xg Dropdown Styles End */
+
+/* Dialog Styles Start */
+/* TODO: consolidate */
+/deep/p-dialog.xg-dialog-base-0 {
+  .ui-dialog {
+    .ui-dialog-titlebar {
+      background: $base-1;
+      padding: 13px 20px;
+      border: none;
+      border-radius: $radius-2 $radius-2 0 0;
+      span.ui-dialog-title {
+        color: $base-4;
+        font-size: $large;
+        font-weight: $weight-normal;
+      }
+    }
+    .ui-dialog-content {
+      max-height: calc(100% - 50px);
+      background: $base-0;
+      padding: 8px;
+      border: none;
+      border-top: $border-base-2;
+      border-radius: 0 0 $radius-2 $radius-2;
+    }
+  }
+}
+/deep/p-dialog.xg-dialog-base-1 {
+  .ui-dialog {
+    .ui-dialog-titlebar {
+      background: $base-1;
+      padding: 13px 20px;
+      border: none;
+      border-radius: $radius-2 $radius-2 0 0;
+      span.ui-dialog-title {
+        color: $base-4;
+        font-size: $large;
+        font-weight: $weight-normal;
+      }
+    }
+    .ui-dialog-content {
+      max-height: calc(100% - 50px);
+      background: $base-1;
+      padding: 20px;
+      border: none;
+      border-top: $border-base-2;
+      border-radius: 0 0 $radius-2 $radius-2;
+    }
+  }
+}
+/deep/p-dialog.xg-dialog-tabbed {
+  .ui-dialog {
+    .ui-dialog-titlebar {
+      background: $base-1;
+      padding: 13px 20px;
+      border: none;
+      border-radius: $radius-2 $radius-2 0 0;
+      span.ui-dialog-title {
+        color: $base-4;
+        font-size: $large;
+        font-weight: $weight-normal;
+      }
+    }
+    .ui-dialog-content {
+      max-height: calc(100% - 50px);
+      background: $base-1;
+      padding: 0px;
+      border: none;
+      border-top: $border-base-2;
+      border-radius: 0 0 $radius-2 $radius-2;
+    }
+    mat-tab-body {
+      div.xg-dialog-template-base-0 {
+        background-color: $base-0;
+        padding: 8px;
+      }
+      div.xg-dialog-template-base-1 {
+        background-color: $base-1;
+        padding: 20px;
+      }
+    }
+  }
+}
+/* Dialog Styles End */

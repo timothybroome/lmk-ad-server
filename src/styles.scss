@@ -2,3 +2,10 @@
 
 @import 'ag-grid-community/dist/styles/ag-grid.css';
 @import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+
+@import 'variables.scss';
+@import 'global-styles.scss';
+
+body{
+  background-color: $base-1;
+}
