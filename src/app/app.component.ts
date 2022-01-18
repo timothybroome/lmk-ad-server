@@ -6,20 +6,6 @@ import 'ag-grid-enterprise';
 import { CheckboxRenderer } from './checkbox-renderer.component';
 import { ColDef } from 'ag-grid-community/dist/lib/main';
 
-interface IBookingListImportItem {
-  'Campaign Number': string;
-  'External reference': string;
-  'Sales Area Code': string;
-  'Break Date': string;
-  Length: string;
-  Sequence: string;
-  'Industry Code': string;
-  'Copy Code': string;
-  'Protected Copy': string;
-  'Spot Number': string;
-  Tolerance: string;
-}
-
 @Component({
   selector: 'my-app',
   template: `
@@ -56,7 +42,6 @@ interface IBookingListImportItem {
 
       <div class="xg-frame-2 half-width-frame">
         <h4 class="title">Content Restriction</h4>
-      
       </div>
       <div class="xg-frame-2 half-width-frame">
         <h4 class="title">Content Targeting</h4>
