@@ -1,0 +1,30 @@
+{
+  "data": [
+    {
+      "cmodNo": 1,
+      "contentGroupNo": 142,
+      "contentGroupDescription": "ExKidsincHFSS",
+      "sareNo": 0,
+      "excludeYn": false,
+      "origExcludeYn": false,
+      "valid": false
+    },
+    {
+      "cmodNo": 1,
+      "contentGroupNo": 2821,
+      "contentGroupDescription": "Channel Partners (GO)",
+      "sareNo": 0,
+      "excludeYn": false,
+      "origExcludeYn": false,
+      "valid": false
+    }
+  ],
+  "totalCount": 2,
+  "filteredCount": 2,
+  "totalPages": 1,
+  "currentPage": 0,
+  "pageSize": 100,
+  "focusFound": false,
+  "focusPage": 0,
+  "warnings": []
+}

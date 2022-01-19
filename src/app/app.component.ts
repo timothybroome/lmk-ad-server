@@ -123,15 +123,15 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
             id="myGrid2"
             class="ag-theme-alpine"
             [defaultColDef]="defaultColDef"
-            [columnDefs]="colDefsRestriction"
-            [rowData]="restriction"
+            [columnDefs]="onDemandDetailsRestrictionColDef"
+            [rowData]="onDemandDetailsRestriction"
             [frameworkComponents]="frameworkComponents"
             [gridOptions]="gridOptions"
             (gridReady)="onGridReady($event)"
           ></ag-grid-angular>
         </div>
         <div class="xg-frame-2 half-width-frame">
-          <h4 class="title">Content Targeting</h4>
+          <h4 class="title" (click)="displayModal = !displayModal">Content Targeting</h4>
 
           <div class="checkbox-row">
             <div
@@ -166,7 +166,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
         </div>
       </div>
 
-      <div class="overlay">
+      <div class="overlay" *ngIf="displayModal">
         <div class="modal">
           <h3 class="header">Content Set</h3>
 
@@ -194,8 +194,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
           </div>
 
           <div class="footer">
-            <div class="button-cancel">CANCEL</div>
-            <div class="button-apply">APPLY</div>
+            <div class="button-cancel" (click)="displayModal = !displayModal">CANCEL</div>
+            <div class="button-apply" (click)="displayModal = !displayModal">APPLY</div>
           </div>
         </div>
       </div>
@@ -213,11 +213,13 @@ export class AppComponent implements OnInit {
   private gridOptionsApi;
   private frameworkComponents;
 
+  private displayModal: boolean = false;
+
   private lmkData: any;
   private colDefs: ColDef[];
 
-  private restriction: any[] = [{ Restriction: '123', Exclude: 'true' }];
-  private colDefsRestriction = [{ field: 'Restriction' }, { field: 'Exclude' }];
+  private onDemandDetailsRestriction: any[] = [{ Restriction: '123', Exclude: 'true' }];
+  private onDemandDetailsRestrictionColDefs: ColDef[];
 
   private colDefsHC = [
     {
@@ -547,18 +549,28 @@ export class AppComponent implements OnInit {
             enableRowGroup: true,
           };
         });
-
         var nameCol = colDefs.find((c) => (c.field = 'name'));
-        //@
         nameCol.width = 600;
         this.colDefs = [nameCol, ...colDefs.filter((cd) => cd != nameCol)];
+      });
 
-        console.log('this.colDefs', this.colDefs);
-        console.log('this.lmkData', this.lmkData);
-        console.log('this.gridApi', this.gridApi);
+      this.httpClient
+      .get<any>('assets/campaigns-725251-ad-server-onDemandDetailsRestriction.json')
+      .subscribe((res) => {
+        console.log('onDemandDetailsRestriction data recieved', res);
 
-        // this.gridApi.setColDefs(this.colDefs);
-        this.gridApi.setRowData(this.lmkData);
+        this.onDemandDetailsRestriction = res.data;
+        console.log(Object.keys(res.data[0]));
+
+        var onDemandDetailsRestrictionColDefs = Object.keys(res.data[0]).map((k) => {
+          return {
+            field: k,
+            enableRowGroup: true,
+          };
+        });
+        var nameCol = onDemandDetailsRestrictionColDefs.find((c) => (c.field = 'name'));
+        nameCol.width = 600;
+        this.onDemandDetailsRestrictionColDefs = [nameCol, ...onDemandDetailsRestrictionColDefs.filter((cd) => cd != nameCol)];
       });
   }
 

@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "adspNo": 24,
+      "name": "SKYGOVOD_PREROLL_SPONSOR_IN",
+      "cmodNo": 1,
+      "sareNo": 0,
+      "imprTotAct": 0,
+      "imprActDate": 0,
+      "imprActTime": 0
+    },
+    {
+      "adspNo": 25,
+      "name": "SKYGOVOD_MIDROLL_SPONSOR_IN",
+      "cmodNo": 1,
+      "sareNo": 0,
+      "imprTotAct": 0,
+      "imprActDate": 0,
+      "imprActTime": 0
+    },
+    {
+      "adspNo": 26,
+      "name": "SKYGOVOD_MIDROLL_SPONSOR_OUT",
+      "cmodNo": 1,
+      "sareNo": 0,
+      "imprTotAct": 0,
+      "imprActDate": 0,
+      "imprActTime": 0
+    }
+  ],
+  "totalCount": 3,
+  "filteredCount": 3,
+  "totalPages": 1,
+  "currentPage": 0,
+  "pageSize": 100,
+  "focusFound": false,
+  "focusPage": 0,
+  "warnings": []
+}
