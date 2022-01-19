@@ -84,91 +84,114 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
           <h4 class="title">Advertising Space</h4>
 
           <ag-grid-angular
-          #agGrid1
-          style="width: 100%; height: 300px;"
-          id="myGrid2"
-          class="ag-theme-alpine"
-          [defaultColDef]="defaultColDef"
-          [columnDefs]="colDefsRestriction"
-          [rowData]="restriction"
-          [frameworkComponents]="frameworkComponents"
-          [gridOptions]="gridOptions"
-          (gridReady)="onGridReady($event)"
-        ></ag-grid-angular>
+            #agGrid1
+            style="width: 100%; height: 300px;"
+            id="myGrid2"
+            class="ag-theme-alpine"
+            [defaultColDef]="defaultColDef"
+            [columnDefs]="colDefsRestriction"
+            [rowData]="restriction"
+            [frameworkComponents]="frameworkComponents"
+            [gridOptions]="gridOptions"
+            (gridReady)="onGridReady($event)"
+          ></ag-grid-angular>
         </div>
 
         <div class="xg-frame-2 half-width-frame">
           <h4 class="title">Content Restriction</h4>
 
           <div class="checkbox-row">
-
-          <div class="xg-mat-checkbox" [ngClass]="{ 'xg-required': required }">
-            <mat-checkbox
-              [(ngModel)]="checkboxModelValue"
-              [(indeterminate)]="indeterminate"
-              [labelPosition]="labelLeft ? 'before' : 'after'"
-              [required]="required"
-              [disabled]="disabled || readOnly"
-              #xgCheckboxModel="ngModel"
+            <div
+              class="xg-mat-checkbox"
+              [ngClass]="{ 'xg-required': required }"
             >
-              <span
-                [title]="labelName"
+              <mat-checkbox
+                [(ngModel)]="checkboxModelValue"
+                [(indeterminate)]="indeterminate"
+                [labelPosition]="labelLeft ? 'before' : 'after'"
+                [required]="required"
+                [disabled]="disabled || readOnly"
+                #xgCheckboxModel="ngModel"
               >
-                Apply Ad Restrictions
-              </span>
-            </mat-checkbox>
+                <span [title]="labelName"> Apply Ad Restrictions </span>
+              </mat-checkbox>
+            </div>
           </div>
-  
-
-        </div>
-        <ag-grid-angular
-        #agGrid1
-        style="width: 100%; height: 300px;"
-        id="myGrid2"
-        class="ag-theme-alpine"
-        [defaultColDef]="defaultColDef"
-        [columnDefs]="colDefsRestriction"
-        [rowData]="restriction"
-        [frameworkComponents]="frameworkComponents"
-        [gridOptions]="gridOptions"
-        (gridReady)="onGridReady($event)"
-      ></ag-grid-angular>
-  
+          <ag-grid-angular
+            #agGrid1
+            style="width: 100%; height: 300px;"
+            id="myGrid2"
+            class="ag-theme-alpine"
+            [defaultColDef]="defaultColDef"
+            [columnDefs]="colDefsRestriction"
+            [rowData]="restriction"
+            [frameworkComponents]="frameworkComponents"
+            [gridOptions]="gridOptions"
+            (gridReady)="onGridReady($event)"
+          ></ag-grid-angular>
         </div>
         <div class="xg-frame-2 half-width-frame">
           <h4 class="title">Content Targeting</h4>
 
           <div class="checkbox-row">
-          <div class="xg-mat-checkbox" [ngClass]="{ 'xg-required': required }">
-            <mat-checkbox
-              [(ngModel)]="checkboxModelValue"
-              [(indeterminate)]="indeterminate"
-              [labelPosition]="labelLeft ? 'before' : 'after'"
-              [required]="required"
-              [disabled]="disabled || readOnly"
-              #xgCheckboxModel="ngModel"
+            <div
+              class="xg-mat-checkbox"
+              [ngClass]="{ 'xg-required': required }"
             >
-              <span
-                [title]="labelName"
+              <mat-checkbox
+                [(ngModel)]="checkboxModelValue"
+                [(indeterminate)]="indeterminate"
+                [labelPosition]="labelLeft ? 'before' : 'after'"
+                [required]="required"
+                [disabled]="disabled || readOnly"
+                #xgCheckboxModel="ngModel"
               >
-                Target to specifc content
-              </span>
-            </mat-checkbox>
-          </div>
+                <span [title]="labelName"> Target to specifc content </span>
+              </mat-checkbox>
+            </div>
           </div>
 
           <ag-grid-angular
-          #agGrid1
-          style="width: 100%; height: 300px;"
-          id="myGrid2"
-          class="ag-theme-alpine"
-          [defaultColDef]="defaultColDef"
-          [columnDefs]="colDefsRestriction"
-          [rowData]="restriction"
-          [frameworkComponents]="frameworkComponents"
-          [gridOptions]="gridOptions"
-          (gridReady)="onGridReady($event)"
-        ></ag-grid-angular>
+            #agGrid1
+            style="width: 100%; height: 300px;"
+            id="myGrid2"
+            class="ag-theme-alpine"
+            [defaultColDef]="defaultColDef"
+            [columnDefs]="colDefsRestriction"
+            [rowData]="restriction"
+            [frameworkComponents]="frameworkComponents"
+            [gridOptions]="gridOptions"
+            (gridReady)="onGridReady($event)"
+          ></ag-grid-angular>
+        </div>
+      </div>
+
+      <div class="overlay">
+        <div class="modal">
+          <h3 class="header">Content Set</h3>
+
+          <div class="xg-frame-2">
+            <h3 class="header">Category</h3>
+          
+          </div>
+
+          <div class="modal-body-grid">
+            <div class="xg-frame-2">
+              <h3 class="header">Series Mask</h3>
+            </div>
+
+            <div class="xg-frame-2">
+              <h3 class="header">VOD Channel</h3>
+            </div>
+
+            <div class="xg-frame-2">
+              <h3 class="header">Custom Video Group</h3>
+            </div>
+
+            <div class="xg-frame-2">
+              <h3 class="header">Programme Mask</h3>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -188,8 +211,8 @@ export class AppComponent implements OnInit {
   private lmkData: any;
   private colDefs: ColDef[];
 
-  private restriction: any[] = [{"Restriction":"123", "Exclude":"true"}];
-  private colDefsRestriction = [{field: "Restriction"}, {field: "Exclude"}];
+  private restriction: any[] = [{ Restriction: "123", Exclude: "true" }];
+  private colDefsRestriction = [{ field: "Restriction" }, { field: "Exclude" }];
 
   private colDefsHC = [
     {
