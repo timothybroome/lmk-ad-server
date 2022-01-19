@@ -536,6 +536,26 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.httpClient
+    .get<any>('assets/campaigns-725252-ad-server-adServerDetails-abc.json')
+    .subscribe((res) => {
+      console.log('onDemandDetailsRestriction data recieved', res);
+
+      this.onDemandDetailsRestriction = res.data;
+      console.log(Object.keys(res.data[0]));
+
+      var onDemandDetailsRestrictionColDefs = Object.keys(res.data[0]).map((k) => {
+        return {
+          field: k,
+          enableRowGroup: true,
+        };
+      });
+      var nameCol = onDemandDetailsRestrictionColDefs.find((c) => (c.field = 'name'));
+      nameCol.width = 600;
+      this.onDemandDetailsRestrictionColDefs = [nameCol, ...onDemandDetailsRestrictionColDefs.filter((cd) => cd != nameCol)];
+    });
+
+
+    this.httpClient
       .get<any>('assets/campaigns-725252-ad-server-adServerDetails.json')
       .subscribe((res) => {
         console.log('data recieved', res);
@@ -552,25 +572,6 @@ export class AppComponent implements OnInit {
         var nameCol = colDefs.find((c) => (c.field = 'name'));
         nameCol.width = 600;
         this.colDefs = [nameCol, ...colDefs.filter((cd) => cd != nameCol)];
-      });
-
-      this.httpClient
-      .get<any>('assets/campaigns-725251-ad-server-onDemandDetailsRestriction.json')
-      .subscribe((res) => {
-        console.log('onDemandDetailsRestriction data recieved', res);
-
-        this.onDemandDetailsRestriction = res.data;
-        console.log(Object.keys(res.data[0]));
-
-        var onDemandDetailsRestrictionColDefs = Object.keys(res.data[0]).map((k) => {
-          return {
-            field: k,
-            enableRowGroup: true,
-          };
-        });
-        var nameCol = onDemandDetailsRestrictionColDefs.find((c) => (c.field = 'name'));
-        nameCol.width = 600;
-        this.onDemandDetailsRestrictionColDefs = [nameCol, ...onDemandDetailsRestrictionColDefs.filter((cd) => cd != nameCol)];
       });
   }
 
