@@ -78,23 +78,23 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
               />
             </div>
           </div>
-
-          <div class="xg-text-group" [ngClass]="{ 'xg-required': required }">
-            <label class="xg-text-label" for="inputControl"
-              >Advertising Space
-            </label>
-            <input
-              type="text"
-              class="xg-text-box"
-              name="textInput"
-              [(ngModel)]="inputModelValue"
-              [placeholder]="placeholder"
-            />
-          </div>
         </div>
 
         <div class="xg-frame-2 half-width-frame">
-          <h4 class="title">Advertising Package</h4>
+          <h4 class="title">Advertising Space</h4>
+
+          <ag-grid-angular
+          #agGrid1
+          style="width: 100%; height: 300px;"
+          id="myGrid2"
+          class="ag-theme-alpine"
+          [defaultColDef]="defaultColDef"
+          [columnDefs]="colDefsRestriction"
+          [rowData]="restriction"
+          [frameworkComponents]="frameworkComponents"
+          [gridOptions]="gridOptions"
+          (gridReady)="onGridReady($event)"
+        ></ag-grid-angular>
         </div>
 
         <div class="xg-frame-2 half-width-frame">
@@ -114,29 +114,10 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
               <span
                 [title]="labelName"
               >
-                Targeted Content
+                Apply Ad Restrictions
               </span>
             </mat-checkbox>
           </div>
-
-          <div class="xg-mat-checkbox" [ngClass]="{ 'xg-required': required }">
-          <mat-checkbox
-            [(ngModel)]="checkboxModelValue"
-            [(indeterminate)]="indeterminate"
-            [labelPosition]="labelLeft ? 'before' : 'after'"
-            [required]="required"
-            [disabled]="disabled || readOnly"
-            #xgCheckboxModel="ngModel"
-          >
-            <span
-
-              [title]="labelName"
-            >
-              All Content
-            </span>
-          </mat-checkbox>
-        </div>
-
   
 
         </div>
@@ -156,6 +137,38 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
         </div>
         <div class="xg-frame-2 half-width-frame">
           <h4 class="title">Content Targeting</h4>
+
+          <div class="checkbox-row">
+          <div class="xg-mat-checkbox" [ngClass]="{ 'xg-required': required }">
+            <mat-checkbox
+              [(ngModel)]="checkboxModelValue"
+              [(indeterminate)]="indeterminate"
+              [labelPosition]="labelLeft ? 'before' : 'after'"
+              [required]="required"
+              [disabled]="disabled || readOnly"
+              #xgCheckboxModel="ngModel"
+            >
+              <span
+                [title]="labelName"
+              >
+                Target to specifc content
+              </span>
+            </mat-checkbox>
+          </div>
+          </div>
+
+          <ag-grid-angular
+          #agGrid1
+          style="width: 100%; height: 300px;"
+          id="myGrid2"
+          class="ag-theme-alpine"
+          [defaultColDef]="defaultColDef"
+          [columnDefs]="colDefsRestriction"
+          [rowData]="restriction"
+          [frameworkComponents]="frameworkComponents"
+          [gridOptions]="gridOptions"
+          (gridReady)="onGridReady($event)"
+        ></ag-grid-angular>
         </div>
       </div>
     </div>
