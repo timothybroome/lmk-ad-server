@@ -16,6 +16,7 @@
 
 @import 'variables.scss';
 
+
 /* XG Input Styles Start */
 .xg-text-group {
   margin-bottom: 15px;
@@ -290,6 +291,11 @@ div.pac-container {
     }
   }
 }
+
+
+
+
+
 /* Xg-Prepend Icons in Iput Field Styles */
 
 /* Xg Dropdown Styles Start */
@@ -364,7 +370,7 @@ div.pac-container {
 
 /* Dialog Styles Start */
 /* TODO: consolidate */
-/deep/p-dialog.xg-dialog-base-0 {
+p-dialog.xg-dialog-base-0 {
   .ui-dialog {
     .ui-dialog-titlebar {
       background: $base-1;
@@ -387,7 +393,7 @@ div.pac-container {
     }
   }
 }
-/deep/p-dialog.xg-dialog-base-1 {
+p-dialog.xg-dialog-base-1 {
   .ui-dialog {
     .ui-dialog-titlebar {
       background: $base-1;
@@ -410,7 +416,7 @@ div.pac-container {
     }
   }
 }
-/deep/p-dialog.xg-dialog-tabbed {
+p-dialog.xg-dialog-tabbed {
   .ui-dialog {
     .ui-dialog-titlebar {
       background: $base-1;

@@ -9,5 +9,99 @@
 }
 
 .half-width-frame {
-  height: 300px;
+  height: 400px;
+}
+
+.form-fields-grid {
+  display: grid;
+  gap: 0px 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.xg-text-group {
+  margin-top: 20px;
+}
+
+//xg-input
+
+@import '../component-styles.scss';
+.xg-password .xg-alert,
+.xg-number .xg-alert {
+  bottom: auto !important;
+}
+
+.xg-input {
+  width: 100%;
+  &:focus {
+    outline: none;
+  }
+  div {
+    &:focus {
+      outline: none;
+    }
+  }
+  .mat-form-field {
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.checkbox-row{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  mat-checkbox{
+    font-family: inherit !important;
+    font-size: inherit;
+  }
+}
+
+.embeded {
+  .xg-text-group {
+    overflow: hidden;
+    margin: 0px;
+    input.xg-text-box {
+      padding: 0px;
+      min-height: 16px;
+      line-height: 16px;
+      width: 100%;
+      border: none;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+    .invalid {
+      box-shadow: none;
+    }
+    .xg-focus-border {
+      display: none;
+    }
+    &:focus,
+    &:focus-within {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}
+mat-form-field.mat-form-field {
+  span.mat-form-field-required-marker {
+    color: $error-1 !important;
+  }
+  .mat-form-field-underline {
+    background-color: $base-3;
+  }
+
+  /** For Disabled Input  */
+  &.xg-disabled {
+    label.mat-form-field-label {
+      mat-label.xg-text-label {
+        color: $base-2;
+      }
+    }
+    .mat-form-field-underline {
+      background-color: $base-2;
+      background-image: none;
+    }
+  }
 }
