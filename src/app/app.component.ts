@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import 'ag-grid-enterprise';
-import { CheckboxRenderer } from './checkbox-renderer.component';
-import { ColDef } from 'ag-grid-community/dist/lib/main';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { Component, OnInit } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+import "ag-grid-enterprise";
+import { CheckboxRenderer } from "./checkbox-renderer.component";
+import { ColDef } from "ag-grid-community/dist/lib/main";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 @Component({
-  selector: 'my-app',
+  selector: "my-app",
   template: `
     <h2 class="title">VOD</h2>
 
@@ -89,8 +89,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
             id="myGrid2"
             class="ag-theme-alpine"
             [defaultColDef]="defaultColDef"
-            [columnDefs]="colDefsRestriction"
-            [rowData]="restriction"
+            [columnDefs]="onDemandDetailsAdSpaceColDefs"
+            [rowData]="onDemandDetailsAdSpace"
             [frameworkComponents]="frameworkComponents"
             [gridOptions]="gridOptions"
             (gridReady)="onGridReady($event)"
@@ -123,7 +123,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
             id="myGrid2"
             class="ag-theme-alpine"
             [defaultColDef]="defaultColDef"
-            [columnDefs]="onDemandDetailsRestrictionColDef"
+            [columnDefs]="onDemandDetailsRestrictionColDefs"
             [rowData]="onDemandDetailsRestriction"
             [frameworkComponents]="frameworkComponents"
             [gridOptions]="gridOptions"
@@ -131,7 +131,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
           ></ag-grid-angular>
         </div>
         <div class="xg-frame-2 half-width-frame">
-          <h4 class="title" (click)="displayModal = !displayModal">Content Targeting</h4>
+          <h4 class="title" (click)="displayModal = !displayModal">
+            Content Targeting
+          </h4>
 
           <div class="checkbox-row">
             <div
@@ -172,7 +174,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
           <div class="xg-frame-2">
             <h3 class="header">Category</h3>
-          
           </div>
 
           <div class="modal-body-grid">
@@ -194,14 +195,18 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
           </div>
 
           <div class="footer">
-            <div class="button-cancel" (click)="displayModal = !displayModal">CANCEL</div>
-            <div class="button-apply" (click)="displayModal = !displayModal">APPLY</div>
+            <div class="button-cancel" (click)="displayModal = !displayModal">
+              CANCEL
+            </div>
+            <div class="button-apply" (click)="displayModal = !displayModal">
+              APPLY
+            </div>
           </div>
         </div>
       </div>
     </div>
   `,
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
   private gridApi;
@@ -218,288 +223,343 @@ export class AppComponent implements OnInit {
   private lmkData: any;
   private colDefs: ColDef[];
 
-  private onDemandDetailsRestriction: any[] = [{ Restriction: '123', Exclude: 'true' }];
-  private onDemandDetailsRestrictionColDefs: ColDef[];
+  private onDemandDetailsRestriction: any[] = [
+    {
+      cmodNo: 1,
+      contentGroupNo: 142,
+      contentGroupDescription: "ExKidsincHFSS",
+      sareNo: 0,
+      excludeYn: false,
+      origExcludeYn: false,
+      valid: false,
+    },
+    {
+      cmodNo: 1,
+      contentGroupNo: 2821,
+      contentGroupDescription: "Channel Partners (GO)",
+      sareNo: 0,
+      excludeYn: false,
+      origExcludeYn: false,
+      valid: false,
+    },
+  ];
+
+  private onDemandDetailsAdSpace = [
+    {
+      adspNo: 24,
+      name: "SKYGOVOD_PREROLL_SPONSOR_IN",
+      cmodNo: 1,
+      sareNo: 0,
+      imprTotAct: 0,
+      imprActDate: 0,
+      imprActTime: 0,
+    },
+    {
+      adspNo: 25,
+      name: "SKYGOVOD_MIDROLL_SPONSOR_IN",
+      cmodNo: 1,
+      sareNo: 0,
+      imprTotAct: 0,
+      imprActDate: 0,
+      imprActTime: 0,
+    },
+    {
+      adspNo: 26,
+      name: "SKYGOVOD_MIDROLL_SPONSOR_OUT",
+      cmodNo: 1,
+      sareNo: 0,
+      imprTotAct: 0,
+      imprActDate: 0,
+      imprActTime: 0,
+    },
+  ];
+
+  private onDemandDetailsRestrictionColDefs: ColDef[] = [
+    { field: "contentGroupDescription", width: "200px" },
+  ];
+  private onDemandDetailsAdSpaceColDefs: ColDef[] = [
+    { field: "name", width: "200px" },
+  ];
 
   private colDefsHC = [
     {
-      field: 'campNo',
+      field: "campNo",
       enableRowGroup: true,
     },
     {
-      field: 'cmodNo',
+      field: "cmodNo",
       enableRowGroup: true,
     },
     {
-      field: 'odlbNo',
+      field: "odlbNo",
       enableRowGroup: true,
     },
     {
-      field: 'progNo',
+      field: "progNo",
       enableRowGroup: true,
     },
     {
-      field: 'progName',
+      field: "progName",
       enableRowGroup: true,
     },
     {
-      field: 'episNo',
+      field: "episNo",
       enableRowGroup: true,
     },
     {
-      field: 'episName',
+      field: "episName",
       enableRowGroup: true,
     },
     {
-      field: 'platNo',
+      field: "platNo",
       enableRowGroup: true,
     },
     {
-      field: 'platName',
+      field: "platName",
       enableRowGroup: true,
     },
     {
-      field: 'priorityInd',
+      field: "priorityInd",
       enableRowGroup: true,
     },
     {
-      field: 'priorityIndText',
+      field: "priorityIndText",
       enableRowGroup: true,
     },
     {
-      field: 'geogNo',
+      field: "geogNo",
       enableRowGroup: true,
     },
     {
-      field: 'geogName',
+      field: "geogName",
       enableRowGroup: true,
     },
     {
-      field: 'exclusiveYn',
+      field: "exclusiveYn",
       enableRowGroup: true,
     },
     {
-      field: 'adspNo',
+      field: "adspNo",
       enableRowGroup: true,
     },
     {
-      field: 'adspName',
+      field: "adspName",
       enableRowGroup: true,
     },
     {
-      field: 'sttDate',
+      field: "sttDate",
       enableRowGroup: true,
     },
     {
-      field: 'endDate',
+      field: "endDate",
       enableRowGroup: true,
     },
     {
-      field: 'duration',
+      field: "duration",
       enableRowGroup: true,
     },
     {
-      field: 'durationAsString',
+      field: "durationAsString",
       enableRowGroup: true,
     },
     {
-      field: 'demoNo',
+      field: "demoNo",
       enableRowGroup: true,
     },
     {
-      field: 'demoShortName',
+      field: "demoShortName",
       enableRowGroup: true,
     },
     {
-      field: 'seqNo',
+      field: "seqNo",
       enableRowGroup: true,
     },
     {
-      field: 'bstpNo',
+      field: "bstpNo",
       enableRowGroup: true,
     },
     {
-      field: 'bstpCode',
+      field: "bstpCode",
       enableRowGroup: true,
     },
     {
-      field: 'budget',
+      field: "budget",
       enableRowGroup: true,
     },
     {
-      field: 'prevBudget',
+      field: "prevBudget",
       enableRowGroup: true,
     },
     {
-      field: 'adlinkStyleNo',
+      field: "adlinkStyleNo",
       enableRowGroup: true,
     },
     {
-      field: 'instructionText',
+      field: "instructionText",
       enableRowGroup: true,
     },
     {
-      field: 'cpt',
+      field: "cpt",
       enableRowGroup: true,
     },
     {
-      field: 'prevCpt',
+      field: "prevCpt",
       enableRowGroup: true,
     },
     {
-      field: 'imprTotTgt',
+      field: "imprTotTgt",
       enableRowGroup: true,
     },
     {
-      field: 'prevImprTotTgt',
+      field: "prevImprTotTgt",
       enableRowGroup: true,
     },
     {
-      field: 'deliveryType',
+      field: "deliveryType",
       enableRowGroup: true,
     },
     {
-      field: 'actualsBillingYn',
+      field: "actualsBillingYn",
       enableRowGroup: true,
     },
     {
-      field: 'prevActualsBillingYn',
+      field: "prevActualsBillingYn",
       enableRowGroup: true,
     },
     {
-      field: 'invoicedYn',
+      field: "invoicedYn",
       enableRowGroup: true,
     },
     {
-      field: 'lineExceptionYn',
+      field: "lineExceptionYn",
       enableRowGroup: true,
     },
     {
-      field: 'externalCampId',
+      field: "externalCampId",
       enableRowGroup: true,
     },
     {
-      field: 'cmodExternalId',
+      field: "cmodExternalId",
       enableRowGroup: true,
     },
     {
-      field: 'cmasExternalId',
+      field: "cmasExternalId",
       enableRowGroup: true,
     },
     {
-      field: 'origMaxImpressions',
+      field: "origMaxImpressions",
       enableRowGroup: true,
     },
     {
-      field: 'maxImpressions',
+      field: "maxImpressions",
       enableRowGroup: true,
     },
     {
-      field: 'imprTotAct',
+      field: "imprTotAct",
       enableRowGroup: true,
     },
     {
-      field: 'nwmdWorkflowstatusNo',
+      field: "nwmdWorkflowstatusNo",
       enableRowGroup: true,
     },
     {
-      field: 'applyAdrestYn',
+      field: "applyAdrestYn",
       enableRowGroup: true,
     },
     {
-      field: 'allContentYn',
+      field: "allContentYn",
       enableRowGroup: true,
     },
     {
-      field: 'name',
+      field: "name",
       enableRowGroup: true,
     },
     {
-      field: 'cmasNameLastSaved',
+      field: "cmasNameLastSaved",
       enableRowGroup: true,
     },
     {
-      field: 'cmasNameLastCalc',
+      field: "cmasNameLastCalc",
       enableRowGroup: true,
     },
     {
-      field: 'adspPackNo',
+      field: "adspPackNo",
       enableRowGroup: true,
     },
     {
-      field: 'adspPackName',
+      field: "adspPackName",
       enableRowGroup: true,
     },
     {
-      field: 'contentGroupNo',
+      field: "contentGroupNo",
       enableRowGroup: true,
     },
     {
-      field: 'contentGroupDescription',
+      field: "contentGroupDescription",
       enableRowGroup: true,
     },
     {
-      field: 'prevSttDate',
+      field: "prevSttDate",
       enableRowGroup: true,
     },
     {
-      field: 'prevEndDate',
+      field: "prevEndDate",
       enableRowGroup: true,
     },
     {
-      field: 'prevBstpNo',
+      field: "prevBstpNo",
       enableRowGroup: true,
     },
     {
-      field: 'extRef',
+      field: "extRef",
       enableRowGroup: true,
     },
     {
-      field: 'prevExtRef',
+      field: "prevExtRef",
       enableRowGroup: true,
     },
     {
-      field: 'industryCode',
+      field: "industryCode",
       enableRowGroup: true,
     },
     {
-      field: 'userFieldValue1',
+      field: "userFieldValue1",
       enableRowGroup: true,
     },
     {
-      field: 'userFieldValue2',
+      field: "userFieldValue2",
       enableRowGroup: true,
     },
     {
-      field: 'copyRowAsNewYn',
+      field: "copyRowAsNewYn",
       enableRowGroup: true,
     },
     {
-      field: 'spoolNo',
+      field: "spoolNo",
       enableRowGroup: true,
     },
     {
-      field: 'segmId',
+      field: "segmId",
       enableRowGroup: true,
     },
     {
-      field: 'segmDescription',
+      field: "segmDescription",
       enableRowGroup: true,
     },
     {
-      field: 'budgetPerc',
+      field: "budgetPerc",
       enableRowGroup: true,
     },
     {
-      field: 'imprTotTgtAds',
+      field: "imprTotTgtAds",
       enableRowGroup: true,
     },
     {
-      field: 'imprTotActAds',
+      field: "imprTotActAds",
       enableRowGroup: true,
     },
     {
-      field: 'paybackNlin',
+      field: "paybackNlin",
       enableRowGroup: true,
     },
   ];
@@ -513,7 +573,7 @@ export class AppComponent implements OnInit {
     this.gridOptions = {
       suppressAggFuncInHeader: true,
       rowHeight: 34,
-      rowSelection: 'multiple',
+      rowSelection: "multiple",
       checkboxSelection: true,
 
       // columnDefs: this.colDefs,
@@ -536,29 +596,37 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.httpClient
-    .get<any>('assets/campaigns-725252-ad-server-adServerDetails-abc.json')
-    .subscribe((res) => {
-      console.log('onDemandDetailsRestriction data recieved', res);
+      .get<any>(
+        "https://xgfy42fwk7.execute-api.us-east-2.amazonaws.com/campaigns/725251/ad-server/onDemandDetailsRestriction"
+      )
+      .subscribe((res) => {
+        console.log("onDemandDetailsRestriction data recieved", res);
 
-      this.onDemandDetailsRestriction = res.data;
-      console.log(Object.keys(res.data[0]));
+        this.onDemandDetailsRestriction = res.data;
+        console.log(Object.keys(res.data[0]));
 
-      var onDemandDetailsRestrictionColDefs = Object.keys(res.data[0]).map((k) => {
-        return {
-          field: k,
-          enableRowGroup: true,
-        };
+        var onDemandDetailsRestrictionColDefs = Object.keys(res.data[0]).map(
+          (k) => {
+            return {
+              field: k,
+              enableRowGroup: true,
+            };
+          }
+        );
+        var nameCol = onDemandDetailsRestrictionColDefs.find(
+          (c) => (c.field = "name")
+        );
+        nameCol.width = 600;
+        this.onDemandDetailsRestrictionColDefs = [
+          nameCol,
+          ...onDemandDetailsRestrictionColDefs.filter((cd) => cd != nameCol),
+        ];
       });
-      var nameCol = onDemandDetailsRestrictionColDefs.find((c) => (c.field = 'name'));
-      nameCol.width = 600;
-      this.onDemandDetailsRestrictionColDefs = [nameCol, ...onDemandDetailsRestrictionColDefs.filter((cd) => cd != nameCol)];
-    });
-
 
     this.httpClient
-      .get<any>('assets/campaigns-725252-ad-server-adServerDetails.json')
+      .get<any>("assets/campaigns-725252-ad-server-adServerDetails.json")
       .subscribe((res) => {
-        console.log('data recieved', res);
+        console.log("data recieved", res);
 
         this.lmkData = res.data;
         console.log(Object.keys(this.lmkData[0]));
@@ -569,7 +637,7 @@ export class AppComponent implements OnInit {
             enableRowGroup: true,
           };
         });
-        var nameCol = colDefs.find((c) => (c.field = 'name'));
+        var nameCol = colDefs.find((c) => (c.field = "name"));
         nameCol.width = 600;
         this.colDefs = [nameCol, ...colDefs.filter((cd) => cd != nameCol)];
       });
