@@ -43,13 +43,19 @@
     color: $base-4;
   }
 
-  .action-button {
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-left: 4px;
-    padding-right: 5px;
-    margin-right: 10px;
-    cursor: pointer;
+
+  .buttons{
+      display: flex;
+      flex-direction: row;
+
+    .action-button {
+      padding-top: 6px;
+      padding-bottom: 6px;
+      padding-left: 4px;
+      padding-right: 5px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
   }
 }
 

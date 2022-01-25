@@ -81,7 +81,16 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
         </div>
 
         <div class="xg-frame-2 half-width-frame">
-          <h4 class="title">Advertising Space</h4>
+
+        <div class="action-bar">
+        <div class="title">
+          Advertising Space
+        </div>
+            <div class="buttons">
+              <div class="action-button"  (click)="displayModal = !displayModal">ADD</div>
+              <div class="action-button"  (click)="displayModal = !displayModal">EDIT</div>
+            </div>
+      </div>
 
           <ag-grid-angular
             #agGrid1
@@ -98,25 +107,36 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
         </div>
 
         <div class="xg-frame-2 half-width-frame">
-          <h4 class="title">Content Restriction</h4>
 
-          <div class="checkbox-row">
-            <div
-              class="xg-mat-checkbox"
-              [ngClass]="{ 'xg-required': required }"
-            >
-              <mat-checkbox
-                [(ngModel)]="checkboxModelValue"
-                [(indeterminate)]="indeterminate"
-                [labelPosition]="labelLeft ? 'before' : 'after'"
-                [required]="required"
-                [disabled]="disabled || readOnly"
-                #xgCheckboxModel="ngModel"
+              <div class="checkbox-row">
+              <div
+                class="xg-mat-checkbox"
+                [ngClass]="{ 'xg-required': required }"
               >
-                <span [title]="labelName"> Apply Ad Restrictions </span>
-              </mat-checkbox>
+                <mat-checkbox
+                  [(ngModel)]="checkboxModelValue"
+                  [(indeterminate)]="indeterminate"
+                  [labelPosition]="labelLeft ? 'before' : 'after'"
+                  [required]="required"
+                  [disabled]="disabled || readOnly"
+                  #xgCheckboxModel="ngModel"
+                >
+                  <span [title]="labelName"> Apply Ad Restrictions </span>
+                </mat-checkbox>
+              </div>
             </div>
+
+            <div class="action-bar">
+            <div class="title">
+            Advertising Restriction
+            </div>
+                <div class="buttons">
+                  <div class="action-button"  (click)="displayModal = !displayModal">ADD</div>
+                  <div class="action-button"  (click)="displayModal = !displayModal">EDIT</div>
+                </div>
           </div>
+
+
           <ag-grid-angular
             #agGrid1
             style="width: 100%; height: 300px;"
@@ -153,13 +173,13 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
           <div class="action-bar">
-          <div class="title">
-          Content Targeting
-        </div>
-              <div class="buttons">
-                <div class="action-button"  (click)="displayModal = !displayModal">ADD</div>
-                <div class="action-button"  (click)="displayModal = !displayModal">EDIT</div>
-              </div>
+            <div class="title">
+            Content Targeting
+            </div>
+                <div class="buttons">
+                  <div class="action-button"  (click)="displayModal = !displayModal">ADD</div>
+                  <div class="action-button"  (click)="displayModal = !displayModal">EDIT</div>
+                </div>
           </div>
           <ag-grid-angular
             #agGrid1
