@@ -108,23 +108,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
         <div class="xg-frame-2 half-width-frame">
 
-              <div class="checkbox-row">
-              <div
-                class="xg-mat-checkbox"
-                [ngClass]="{ 'xg-required': required }"
-              >
-                <mat-checkbox
-                  [(ngModel)]="checkboxModelValue"
-                  [(indeterminate)]="indeterminate"
-                  [labelPosition]="labelLeft ? 'before' : 'after'"
-                  [required]="required"
-                  [disabled]="disabled || readOnly"
-                  #xgCheckboxModel="ngModel"
-                >
-                  <span [title]="labelName"> Apply Ad Restrictions </span>
-                </mat-checkbox>
-              </div>
-            </div>
+        <label><input type="checkbox" name="checkbox" [(ngModel)]="allowAR" >Apply ad restrictions</label>
+
+        <div *ngIf="allowAR">
 
             <div class="action-bar">
             <div class="title">
@@ -149,29 +135,23 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
             [gridOptions]="gridOptions"
             (gridReady)="onGridReady($event)"
           ></ag-grid-angular>
-        </div>
-        <div class="xg-frame-2 half-width-frame">
 
 
-          <div class="checkbox-row">
-            <div
-              class="xg-mat-checkbox"
-              [ngClass]="{ 'xg-required': required }"
-            >
-              <mat-checkbox
-                [(ngModel)]="checkboxModelValue"
-                [(indeterminate)]="indeterminate"
-                [labelPosition]="labelLeft ? 'before' : 'after'"
-                [required]="required"
-                [disabled]="disabled || readOnly"
-                #xgCheckboxModel="ngModel"
-              >
-                <span [title]="labelName"> Target to specifc content </span>
-              </mat-checkbox>
-            </div>
           </div>
 
 
+        </div>
+
+
+
+
+        <div class="xg-frame-2 half-width-frame">
+
+
+
+        <label><input type="checkbox" name="checkbox" [(ngModel)]="allowCT" >Target to specific content</label>
+
+        <div *ngIf="allowCT">
           <div class="action-bar">
             <div class="title">
             Content Targeting
@@ -193,7 +173,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
             [gridOptions]="gridOptions"
             (gridReady)="onGridReady($event)"
           ></ag-grid-angular>
+        
         </div>
+        
+          </div>
+
+
       </div>
 
       <div class="overlay" *ngIf="displayModal">
@@ -245,6 +230,9 @@ export class AppComponent implements OnInit {
   private defaultColDef;
   private gridOptionsApi;
   private frameworkComponents;
+
+  private allowAR: boolean = false;
+  private allowCT: boolean = false;
 
   private displayModal: boolean = false;
 
