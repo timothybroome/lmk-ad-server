@@ -131,9 +131,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
           ></ag-grid-angular>
         </div>
         <div class="xg-frame-2 half-width-frame">
-          <h4 class="title" (click)="displayModal = !displayModal">
-            Content Targeting
-          </h4>
+
 
           <div class="checkbox-row">
             <div
@@ -155,7 +153,13 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
           <div class="action-bar">
-              <div class="action-bar">Edit</div>
+          <div class="title">
+          Content Targeting
+        </div>
+              <div class="buttons">
+                <div class="action-button"  (click)="displayModal = !displayModal">ADD</div>
+                <div class="action-button"  (click)="displayModal = !displayModal">EDIT</div>
+              </div>
           </div>
           <ag-grid-angular
             #agGrid1
