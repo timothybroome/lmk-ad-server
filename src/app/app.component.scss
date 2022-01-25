@@ -33,7 +33,6 @@
   align-content: center;
 
   text-transform: capitalize;
-  color: $base-4;
   font-size: 10px;
   color: $base-3;
   padding-top: 5px;
@@ -43,10 +42,9 @@
     color: $base-4;
   }
 
-
-  .buttons{
-      display: flex;
-      flex-direction: row;
+  .buttons {
+    display: flex;
+    flex-direction: row;
 
     .action-button {
       padding-top: 6px;
@@ -59,9 +57,10 @@
   }
 }
 
-label{
+label {
   font-size: 14px;
   color: $base-4;
+  cursor: pointer;
 }
 
 // <div class="overlay">

@@ -13,7 +13,17 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     <h2 class="title">VOD</h2>
 
     <div class="page-grid-container xg-frame-2 button-space">
-      <h3 class="title">Ad Server</h3>
+
+
+    <div class="action-bar">
+    <div class="title">
+    Ad Server
+    </div>
+        <div class="buttons">
+          <div class="action-button"  (click)="displayModal = !displayModal">ADD</div>
+          <div class="action-button"  (click)="displayModal = !displayModal">EDIT</div>
+        </div>
+  </div>
 
       <ag-grid-angular
         #agGrid
