@@ -9,6 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { adServerDetailsData } from './789065/adServerDetails';
 import { onDemandDetailsAdSpaceData } from './789065/onDemandDetailsAdSpace';
+import { onDemandDetailsContentSetDetailsData } from './789065/onDemandDetailsContentSetDetails';
 
 @Component({
   selector: 'my-app',
@@ -180,7 +181,7 @@ import { onDemandDetailsAdSpaceData } from './789065/onDemandDetailsAdSpace';
             class="ag-theme-alpine"
             [defaultColDef]="defaultColDef"
             [columnDefs]="onContentColDefs"
-            [rowData]="contentSet"
+            [rowData]="onDemandDetailsContentSetDetails"
             [frameworkComponents]="frameworkComponents"
             [gridOptions]="gridOptions"
             (gridReady)="onGridReady($event)"
@@ -311,17 +312,7 @@ export class AppComponent implements OnInit {
   ];
 
   private onDemandDetailsAdSpace = [];
-
-  private contentSet = [
-    {
-      cmodNo: 1,
-      setNo: 1,
-      name: 'Content Set 1',
-      matchTypeNo: 1,
-      matchTypeText: 'Match Any',
-      origSetNo: 1,
-    },
-  ];
+  private onDemandDetailsContentSetDetails = [];
 
   private contentCategory = [
     {
@@ -681,20 +672,24 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     console.log('adServerDetailsData.data', adServerDetailsData.data);
     this.adServerDetails = adServerDetailsData.data;
-    this.onDemandDetailsAdSpace = [];
   }
 
   mainSelectionChanged(event) {
     // console.log('mainSelectionChanged', event.api.getSelectedRows());
     this.selectedRow = event.api.getSelectedRows()[0];
-    console.log("this.selectedRow.cmodNo", this.selectedRow.cmodNo);
+    console.log('this.selectedRow.cmodNo', this.selectedRow.cmodNo);
     this.onDemandDetailsAdSpace = onDemandDetailsAdSpaceData.data;
-    
-    this.onDemandDetailsAdSpace = this.onDemandDetailsAdSpace.filter(
-      (d) => {
-        return d.cmodNo.toString().includes(this.selectedRow.cmodNo.toString());
-      }
-    );
+    // TODO - dont know why this doesnt work!
+    //this.onDemandDetailsAdSpace = this.onDemandDetailsAdSpace.filter(
+    //  (d) => {
+    //    return d.cmodNo.toString() == this.selectedRow.cmodNo.toString();
+    //  }
+    //);
+
+    this.onDemandDetailsContentSetDetails =
+      onDemandDetailsContentSetDetailsData.data.filter(
+        (d) => d.cmodNo == this.selectedRow.cmodNo
+      );
 
     console.log(this.selectedRow);
   }
