@@ -687,8 +687,13 @@ export class AppComponent implements OnInit {
   mainSelectionChanged(event) {
     // console.log('mainSelectionChanged', event.api.getSelectedRows());
     this.selectedRow = event.api.getSelectedRows()[0];
-    this.onDemandDetailsAdSpace = onDemandDetailsAdSpaceData.data.filter(
-      (d) => d.cmodNo == this.selectedRow.cmodNo
+    console.log("this.selectedRow.cmodNo", this.selectedRow.cmodNo);
+    this.onDemandDetailsAdSpace = onDemandDetailsAdSpaceData.data;
+    
+    this.onDemandDetailsAdSpace = this.onDemandDetailsAdSpace.filter(
+      (d) => {
+        return d.cmodNo.toString().includes(this.selectedRow.cmodNo.toString());
+      }
     );
 
     console.log(this.selectedRow);
