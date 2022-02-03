@@ -1,4 +1,4 @@
-export const onDemandDetailsRestriction = {
+export const onDemandDetailsRestrictionData = {
   "data": [
       {
           "cmodNo": 1,

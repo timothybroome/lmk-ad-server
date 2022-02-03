@@ -10,6 +10,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { adServerDetailsData } from './789065/adServerDetails';
 import { onDemandDetailsAdSpaceData } from './789065/onDemandDetailsAdSpace';
 import { onDemandDetailsContentSetDetailsData } from './789065/onDemandDetailsContentSetDetails';
+import { onDemandDetailsRestrictionData } from './789065/onDemandDetailsRestriction';
+
 
 @Component({
   selector: 'my-app',
@@ -290,26 +292,7 @@ export class AppComponent implements OnInit {
 
   private adServerDetails: any[] = [];
 
-  private onDemandDetailsRestriction: any[] = [
-    {
-      cmodNo: 1,
-      contentGroupNo: 142,
-      contentGroupDescription: 'ExKidsincHFSS',
-      sareNo: 0,
-      excludeYn: false,
-      origExcludeYn: false,
-      valid: false,
-    },
-    {
-      cmodNo: 1,
-      contentGroupNo: 2821,
-      contentGroupDescription: 'Channel Partners (GO)',
-      sareNo: 0,
-      excludeYn: false,
-      origExcludeYn: false,
-      valid: false,
-    },
-  ];
+  private onDemandDetailsRestriction: any[] = [];
 
   private onDemandDetailsAdSpace = [];
   private onDemandDetailsContentSetDetails = [];
@@ -343,7 +326,7 @@ export class AppComponent implements OnInit {
   ];
 
   private onDemandDetailsRestrictionColDefs: ColDef[] = [
-    { field: 'contentGroupDescription', width: '200px' },
+    { field: 'contentGroupDescription', headerName: "Restriction", width: 200 },{ field: 'excludeYn', headerName: "Exclude" }
   ];
   private onDemandDetailsAdSpaceColDefs: ColDef[] = [
     { field: 'name', width: '200px' },
@@ -690,6 +673,8 @@ export class AppComponent implements OnInit {
       onDemandDetailsContentSetDetailsData.data.filter(
         (d) => d.cmodNo == this.selectedRow.cmodNo
       );
+
+    this.onDemandDetailsRestriction = onDemandDetailsRestrictionData.data.filter((f) => f.cmodNo == this.selectedRow.cmodNo)
 
     console.log(this.selectedRow);
   }
