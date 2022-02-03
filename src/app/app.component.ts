@@ -7,6 +7,9 @@ import { CheckboxRenderer } from './checkbox-renderer.component';
 import { ColDef } from 'ag-grid-community/dist/lib/main';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
+import { adServerDetailsData } from './789065/adServerDetails';
+import { onDemandDetailsAdSpaceData } from './789065/onDemandDetailsAdSpace';
+
 @Component({
   selector: 'my-app',
   template: `
@@ -29,10 +32,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
         #agGrid
         style="width: 100vw; height: 500px;"
         id="myGrid"
-        [rowData]="lmkData"
+        [rowData]="adServerDetails"
         class="ag-theme-alpine"
-        [columnDefs]="colDefs"
+        [columnDefs]="colDefsHC"
         [frameworkComponents]="frameworkComponents"
+        [rowSelection]="'single'"
+        (selectionChanged)="mainSelectionChanged($event)"
       ></ag-grid-angular>
 
       <div class="child-panel">
@@ -45,7 +50,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
               type="text"
               class="xg-text-box"
               name="textInput"
-              [(ngModel)]="inputModelValue"
+              [value]="selectedRow ? selectedRow.name : ' ' "
               [placeholder]="placeholder"
             />
           </div>
@@ -56,7 +61,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
               type="text"
               class="xg-text-box"
               name="textInput"
-              [(ngModel)]="inputModelValue"
+              [value]="selectedRow ? selectedRow.instructionText : ' ' "
               [placeholder]="placeholder"
             ></textarea>
           </div>
@@ -107,7 +112,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
             style="width: 100%; height: 300px;"
             id="myGrid2"
             class="ag-theme-alpine"
-            [defaultColDef]="defaultColDef"
+            [defaultColDef]="onDemandDetailsAdSpace"
             [columnDefs]="onDemandDetailsAdSpaceColDefs"
             [rowData]="onDemandDetailsAdSpace"
             [frameworkComponents]="frameworkComponents"
@@ -122,7 +127,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
         <div *ngIf="allowAR">
 
-            <div class="action-bar">
+          <div class="action-bar">
             <div class="title">
             Advertising Restriction
             </div>
@@ -131,8 +136,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
                   <div class="action-button"  (click)="displayModal = !displayModal">EDIT</div>
                 </div>
           </div>
-
-
           <ag-grid-angular
             #agGrid1
             style="width: 100%; height: 300px;"
@@ -145,7 +148,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
             [gridOptions]="gridOptions"
             (gridReady)="onGridReady($event)"
           ></ag-grid-angular>
-
 
           </div>
 
@@ -195,8 +197,42 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
         <div class="modal">
           <h3 class="header">Content Set</h3>
 
-          <div class="xg-frame-2">
-            <h3 class="header">Category</h3>
+          <div class="xg-frame-2 tall">
+
+          <div class="xg-text-group" [ngClass]="{ 'xg-required': required }">
+            <label class="xg-text-label" for="inputControl">Content Set Name</label>
+            <input
+              type="text"
+              class="xg-text-box half"
+              name="textInput"
+              [(ngModel)]="inputModelValue"
+              [placeholder]="placeholder"
+            />
+          </div>
+
+                    <div class="action-bar">
+                    <div class="title">
+                    Targeted content categories
+                    </div>
+                        <div class="buttons">
+                          <div class="action-button"  (click)="displayModal = !displayModal">ADD</div>
+                          <div class="action-button"  (click)="displayModal = !displayModal">EDIT</div>
+                        </div>
+                  </div>
+                  <ag-grid-angular
+                    #agGrid1
+                    style="width: 100%; height: 180px;"
+                    id="myGrid2"
+                    class="ag-theme-alpine"
+                    [defaultColDef]="defaultColDef"
+                    [columnDefs]="contentCategoryColDefs"
+                    [rowData]="contentCategory"
+                    [frameworkComponents]="frameworkComponents"
+                    [gridOptions]="gridOptions"
+                    (gridReady)="onGridReady($event)"
+                  ></ag-grid-angular>
+
+          
           </div>
 
           <div class="modal-body-grid">
@@ -249,6 +285,10 @@ export class AppComponent implements OnInit {
   private lmkData: any;
   private colDefs: ColDef[];
 
+  /////////
+
+  private adServerDetails: any[] = [];
+
   private onDemandDetailsRestriction: any[] = [
     {
       cmodNo: 1,
@@ -270,35 +310,7 @@ export class AppComponent implements OnInit {
     },
   ];
 
-  private onDemandDetailsAdSpace = [
-    {
-      adspNo: 24,
-      name: 'SKYGOVOD_PREROLL_SPONSOR_IN',
-      cmodNo: 1,
-      sareNo: 0,
-      imprTotAct: 0,
-      imprActDate: 0,
-      imprActTime: 0,
-    },
-    {
-      adspNo: 25,
-      name: 'SKYGOVOD_MIDROLL_SPONSOR_IN',
-      cmodNo: 1,
-      sareNo: 0,
-      imprTotAct: 0,
-      imprActDate: 0,
-      imprActTime: 0,
-    },
-    {
-      adspNo: 26,
-      name: 'SKYGOVOD_MIDROLL_SPONSOR_OUT',
-      cmodNo: 1,
-      sareNo: 0,
-      imprTotAct: 0,
-      imprActDate: 0,
-      imprActTime: 0,
-    },
-  ];
+  private onDemandDetailsAdSpace = [];
 
   private contentSet = [
     {
@@ -309,61 +321,33 @@ export class AppComponent implements OnInit {
       matchTypeText: 'Match Any',
       origSetNo: 1,
     },
+  ];
+
+  private contentCategory = [
     {
-      cmodNo: 2,
-      setNo: 1,
-      name: 'Content Set 1',
-      matchTypeNo: 1,
-      matchTypeText: 'Match Any',
+      cmodNo: 1,
+      contentSetNo: 1,
+      contentGroupNo: 9793,
+      contentGroupDescription: 'Movies',
+      includeYn: true,
+      activeYn: true,
+      rowId: 9793,
+      adTargetableYn: true,
       origSetNo: 1,
+      salesAreas: 'AllVod, AllVodIre, OCAllVod',
     },
+  ];
+
+  private contentCategoryColDefs: ColDef[] = [
     {
-      cmodNo: 3,
-      setNo: 1,
-      name: 'Content Set 1',
-      matchTypeNo: 1,
-      matchTypeText: 'Match Any',
-      origSetNo: 1,
+      field: 'contentGroupDescription',
+      headerName: 'Content category',
+      width: 200,
     },
+    { field: 'contentSubCategory', headerName: 'Sub Category' },
     {
-      cmodNo: 4,
-      setNo: 1,
-      name: 'Content Set 1',
-      matchTypeNo: 1,
-      matchTypeText: 'Match Any',
-      origSetNo: 1,
-    },
-    {
-      cmodNo: 5,
-      setNo: 1,
-      name: 'Content Set 1',
-      matchTypeNo: 1,
-      matchTypeText: 'Match Any',
-      origSetNo: 1,
-    },
-    {
-      cmodNo: 6,
-      setNo: 1,
-      name: 'Content Set 1',
-      matchTypeNo: 1,
-      matchTypeText: 'Match Any',
-      origSetNo: 1,
-    },
-    {
-      cmodNo: 7,
-      setNo: 1,
-      name: 'Content Set 1',
-      matchTypeNo: 1,
-      matchTypeText: 'Match Any',
-      origSetNo: 1,
-    },
-    {
-      cmodNo: 8,
-      setNo: 1,
-      name: 'Content Set 1',
-      matchTypeNo: 1,
-      matchTypeText: 'Match Any',
-      origSetNo: 1,
+      field: 'includeYn',
+      headerName: 'Include',
     },
   ];
 
@@ -375,7 +359,7 @@ export class AppComponent implements OnInit {
   ];
 
   private onContentColDefs: ColDef[] = [
-    { field: 'name', width: '200' },
+    { field: 'name', width: 200 },
     { field: 'matchTypeText' },
   ];
 
@@ -662,6 +646,8 @@ export class AppComponent implements OnInit {
     },
   ];
 
+  private selectedRow = null;
+
   constructor(private httpClient: HttpClient) {
     this.defaultColDef = {
       width: 120,
@@ -693,52 +679,19 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.httpClient
-      .get<any>(
-        'https://xgfy42fwk7.execute-api.us-east-2.amazonaws.com/campaigns/725251/ad-server/onDemandDetailsRestriction'
-      )
-      .subscribe((res) => {
-        console.log('onDemandDetailsRestriction data recieved', res);
+    console.log('adServerDetailsData.data', adServerDetailsData.data);
+    this.adServerDetails = adServerDetailsData.data;
+    this.onDemandDetailsAdSpace = [];
+  }
 
-        this.onDemandDetailsRestriction = res.data;
-        console.log(Object.keys(res.data[0]));
+  mainSelectionChanged(event) {
+    // console.log('mainSelectionChanged', event.api.getSelectedRows());
+    this.selectedRow = event.api.getSelectedRows()[0];
+    this.onDemandDetailsAdSpace = onDemandDetailsAdSpaceData.data.filter(
+      (d) => d.cmodNo == this.selectedRow.cmodNo
+    );
 
-        var onDemandDetailsRestrictionColDefs = Object.keys(res.data[0]).map(
-          (k) => {
-            return {
-              field: k,
-              enableRowGroup: true,
-            };
-          }
-        );
-        var nameCol = onDemandDetailsRestrictionColDefs.find(
-          (c) => (c.field = 'name')
-        );
-        nameCol.width = 600;
-        this.onDemandDetailsRestrictionColDefs = [
-          nameCol,
-          ...onDemandDetailsRestrictionColDefs.filter((cd) => cd != nameCol),
-        ];
-      });
-
-    this.httpClient
-      .get<any>('assets/campaigns-725252-ad-server-adServerDetails.json')
-      .subscribe((res) => {
-        console.log('data recieved', res);
-
-        this.lmkData = res.data;
-        console.log(Object.keys(this.lmkData[0]));
-
-        var colDefs = Object.keys(this.lmkData[0]).map((k) => {
-          return {
-            field: k,
-            enableRowGroup: true,
-          };
-        });
-        var nameCol = colDefs.find((c) => (c.field = 'name'));
-        nameCol.width = 600;
-        this.colDefs = [nameCol, ...colDefs.filter((cd) => cd != nameCol)];
-      });
+    console.log(this.selectedRow);
   }
 
   onGridReady(params) {
