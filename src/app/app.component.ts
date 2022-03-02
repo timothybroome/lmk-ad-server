@@ -12,7 +12,6 @@ import { onDemandDetailsAdSpaceData } from './789065/onDemandDetailsAdSpace';
 import { onDemandDetailsContentSetDetailsData } from './789065/onDemandDetailsContentSetDetails';
 import { onDemandDetailsRestrictionData } from './789065/onDemandDetailsRestriction';
 
-
 @Component({
   selector: 'my-app',
   template: `
@@ -178,7 +177,7 @@ import { onDemandDetailsRestrictionData } from './789065/onDemandDetailsRestrict
           </div>
           <ag-grid-angular
             #agGrid1
-            style="width: 100%; height: 300px;"
+            style="width: 100%; height: 250px;"
             id="myGrid2"
             class="ag-theme-alpine"
             [defaultColDef]="defaultColDef"
@@ -188,9 +187,29 @@ import { onDemandDetailsRestrictionData } from './789065/onDemandDetailsRestrict
             [gridOptions]="gridOptions"
             (gridReady)="onGridReady($event)"
           ></ag-grid-angular>
-        
         </div>
-        
+
+        <div class="xg-text-group">
+        <label class="xg-text-label">Match Criteria Between Sets</label>
+
+          <div class="form-fields-grid-narrow">
+
+          <div>
+            <input type="radio" id="huey" name="drone" value="huey" disabled="onDemandDetailsContentSetDetails.length < 1"
+                   checked>
+            <label for="huey">Match Any</label>
+          </div>
+          <div>
+            <input type="radio" id="dewey" name="drone" value="dewey" disabled="onDemandDetailsContentSetDetails.length < 1">
+            <label for="dewey">Match All</label>
+          </div>
+
+          </div>
+
+        </div>   
+
+
+
           </div>
 
 
@@ -202,6 +221,8 @@ import { onDemandDetailsRestrictionData } from './789065/onDemandDetailsRestrict
 
           <div class="xg-frame-2 tall">
 
+          <div class="form-fields-grid">
+        
           <div class="xg-text-group" [ngClass]="{ 'xg-required': required }">
             <label class="xg-text-label" for="inputControl">Content Set Name</label>
             <input
@@ -211,6 +232,29 @@ import { onDemandDetailsRestrictionData } from './789065/onDemandDetailsRestrict
               [(ngModel)]="inputModelValue"
               [placeholder]="placeholder"
             />
+          </div>
+
+
+        <div class="xg-text-group">
+        <label class="xg-text-label">Match Criteria</label>
+
+          <div class="form-fields-grid">
+
+          <div>
+            <input type="radio" id="huey" name="drone" value="huey"
+                   checked>
+            <label for="huey">Match Any</label>
+          </div>
+          <div>
+            <input type="radio" id="dewey" name="drone" value="dewey">
+            <label for="dewey">Match All</label>
+          </div>
+
+          </div>
+
+        </div>    
+
+
           </div>
 
                     <div class="action-bar">
@@ -281,7 +325,7 @@ export class AppComponent implements OnInit {
   private frameworkComponents;
 
   private allowAR: boolean = false;
-  private allowCT: boolean = false;
+  private allowCT: boolean = true;
 
   private displayModal: boolean = false;
 
@@ -326,7 +370,8 @@ export class AppComponent implements OnInit {
   ];
 
   private onDemandDetailsRestrictionColDefs: ColDef[] = [
-    { field: 'contentGroupDescription', headerName: "Restriction", width: 200 },{ field: 'excludeYn', headerName: "Exclude" }
+    { field: 'contentGroupDescription', headerName: 'Restriction', width: 200 },
+    { field: 'excludeYn', headerName: 'Exclude' },
   ];
   private onDemandDetailsAdSpaceColDefs: ColDef[] = [
     { field: 'name', width: '200px' },
@@ -674,7 +719,10 @@ export class AppComponent implements OnInit {
         (d) => d.cmodNo == this.selectedRow.cmodNo
       );
 
-    this.onDemandDetailsRestriction = onDemandDetailsRestrictionData.data.filter((f) => f.cmodNo == this.selectedRow.cmodNo)
+    this.onDemandDetailsRestriction =
+      onDemandDetailsRestrictionData.data.filter(
+        (f) => f.cmodNo == this.selectedRow.cmodNo
+      );
 
     console.log(this.selectedRow);
   }
